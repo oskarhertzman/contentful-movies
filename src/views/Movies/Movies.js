@@ -16,6 +16,7 @@ export const Movies = (props) => {
       setMovies(res.items);
     })
   }, [])
+  
   return (
     <div className="Movies">
       <div className="Header">

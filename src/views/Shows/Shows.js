@@ -5,7 +5,6 @@ var contentful = require('contentful');
 
 export const Shows = (props) => {
 
-  const [movies, setMovies] = useState([]);
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
@@ -17,9 +16,6 @@ export const Shows = (props) => {
       setShows(res.items);
     })
   }, [])
-
-  console.log(movies)
-  console.log(shows)
 
   return (
     <div className="Shows">
