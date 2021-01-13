@@ -1,45 +1,52 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import './styles/Movies.scss'
 var contentful = require('contentful');
 
 
 export const Movies = (props) => {
 
+  const [client, setClient] = useState();
   const [movies, setMovies] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
-    let client = contentful.createClient({
+    setClient(contentful.createClient({
       space: 'hwcs1bbt6b9l',
       accessToken: 'wW_rDX48N7w8cnGWtdjbJScrOZGaiwKdKoRTIjmfY6Q'
-    })
-    client.getEntries({ content_type: 'movie' }).then(res => {
+    }))
+  }, [])
+
+  useEffect(() => {
+    client && client.getEntries({ content_type: 'movie' }).then(res => {
       setMovies(res.items);
     })
-  }, [])
-  
+  },[client])
+
+const toDetails = (movie) => {
+    console.log(movie)
+      history.push(`details/${movie.sys.id}`)
+  }
+
   return (
     <div className="Movies">
       <div className="Header">
         <h1>Movies</h1>
+        <h4
+        onClick={() => history.push('/create')}
+        >Create Movie</h4>
       </div>
       <div className="Body">
+        <div className="Movie">
         {movies.map((movie, index) => (
-          <div key={index} className="Movie">
-          <h1>{movies.length - index}</h1>
-          <div className="MovieContainer">      
-            <img src={movie.fields.moviecover.fields.file.url} />   
-          <div className="MovieInfo">
-            <h2>{movie.fields.movietitle}</h2>
-            <p>Genre: {movie.fields.moviegenre}</p>
-            <p>Starring: {movie.fields.movieactors.map((actor, index) => {
-              return `${actor.fields.actorname} `
-          })}</p>
-            <p>Director: {movie.fields.moviedirector[0].fields.directorname}</p>
-            <p>{movie.fields.moviedescription.content[0].content[0].value}</p>
+          <div 
+          key={index} 
+          className="MovieContainer"
+          onClick={() => toDetails(movie)}>      
+            <img src={movie.fields.moviecover.fields.file.url} />      
           </div>
-          </div>
-        </div>
         ))}  
+        </div>
       </div>
     </div>
 

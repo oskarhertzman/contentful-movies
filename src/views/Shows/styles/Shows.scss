@@ -1,6 +1,5 @@
 
 .Shows {
-    font-family: 'Orbitron', sans-serif;
     width: 100%;
     background-color: rgb(36, 36, 36);
 }
@@ -24,22 +23,24 @@
     padding-top: 100px;
 }
 
-.Movie {
+.Show {
     color: white;
     width: 70%;
 }
-.MovieContainer {   
+.ShowContainer {   
     display: flex;
     flex-direction: row;
     height: 450px;
-   
-}
 
     img {
         height: 100%;
     }
+   
+}
 
-.MovieInfo {
+    
+
+.ShowInfo {
     margin-left: 50px;
     margin-bottom: auto;
     display: flex;

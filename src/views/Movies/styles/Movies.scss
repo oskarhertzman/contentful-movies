@@ -1,20 +1,39 @@
 
 .Movies {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Circular Std Book', sans-serif;
     width: 100%;
-    background-color: rgb(36, 36, 36);
+    min-height: 100vh;
+    background: #1F1C2C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #928DAB, #1F1C2C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 }
 
 .Header {
+    position: relative;
     width: inherit;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
 
     h1 {
         margin: 0;
-        color: white;
         padding-top: 50px;
         text-align: center;
     }
+    h4 {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-bottom: auto;
+        margin-right: 60px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
 }
 
 .Body {
@@ -26,30 +45,121 @@
 
 .Movie {
     color: white;
-    width: 70%;
-}
-.MovieContainer {   
+    width: 90%;
     display: flex;
     flex-direction: row;
-    height: 450px;
-   
+    justify-content: center;
+    flex-wrap: wrap;
 }
-
+.MovieContainer {
+    display: flex;
+    flex-direction: row;
+    height: 430px;
+    margin: 15px;
+    transition: 0.5s;
     img {
         height: 100%;
+        filter: grayscale(100%);
+    }
+}
+
+.MovieContainer:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.7s;
+  
+    img {
+        opacity: 0.1;
     }
 
-.MovieInfo {
+}
+
+.DetailsContainer { 
+    position: relative;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    -moz-box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    border-radius: 20px;
+    padding: 30px;      
+    display: flex;
+    flex-direction: row;
+    height: 430px;
+    max-width: 1000px;
+    min-width: 300px;
+    justify-content: center;
+    margin: 15px;
+    img {
+        height: 100%;
+        border-radius: 10px;
+    }
+    p {
+        color: rgb(37, 37, 37);
+       font-size: 20px ;
+       margin-bottom: 3px;
+      
+   }
+   label {
+    color: rgb(37, 37, 37);
+    font-size: 14px;
+   }
+
+   input, textarea  {
+       margin-bottom: 20px;
+       padding: 5px;
+       border: 1px solid rgb(172, 172, 172);
+   }
+}
+
+.CreateInfo {
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+}
+.DetailsInfo {
     margin-left: 50px;
     margin-bottom: auto;
     display: flex;
     flex-direction: column;
-   
-    h2 {
-      margin: 0;
-    }
+}
 
-    h2, p {
-        margin-bottom: 3px;
-    }
+.DetailsOptions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.DetailsOptionsDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(170, 35, 35);
+    margin: 10px;
+}
+
+.DetailsOptionsDelete:hover {  
+    background-color: rgb(161, 66, 66);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.DetailsOptionsCreate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(35, 132, 170);
+    margin: 10px;
+}
+
+.DetailsOptionsCreate:hover {  
+    background-color: rgb(72, 143, 172);   
+    cursor: pointer;
+    transition: 0.2s;
 }
