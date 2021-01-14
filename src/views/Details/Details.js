@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from 'react'
-var contentful = require('contentful');
+import { useHistory } from 'react-router-dom';
+import client from '../../utils/client';
+import clientManagement from '../../utils/clientManagement';
 
 
 export const Details = (props) => {
 
    const [details, setDetails] = useState();
    const id = props.match.params.id;
+   const history = useHistory()
 
     useEffect(() => {
-        let client = contentful.createClient({
-          space: 'hwcs1bbt6b9l',
-          accessToken: 'wW_rDX48N7w8cnGWtdjbJScrOZGaiwKdKoRTIjmfY6Q'
-        })
         client.getEntry(id).then(res => {
           setDetails(res);
         })
       }, [])
 
-      console.log(details)
+  const deleteMovie = () => {
+    clientManagement.getSpace('hwcs1bbt6b9l')
+    .then((space) => space.getEnvironment('master'))
+    .then((env) => env.getEntry(id))
+    .then((entry) => entry.unpublish())
+    .then((unpublishsed) => unpublishsed.delete())
+    .then(() => {
+      console.log('Entry deleted')
+      history.push('/movies')
+    })
+    .catch((err) => console.log(err))
+  }
+
   return (
     <div className="Movies">
        { details && 
@@ -37,7 +48,9 @@ export const Details = (props) => {
             <p>{details.fields.moviedescription.content[0].content[0].value}</p>
           </div> 
           <div className="DetailsOptions">
-              <div className="DetailsOptionsDelete">Delete</div>
+              <div 
+              className="DetailsOptionsDelete"
+              onClick={deleteMovie}>Delete</div>
           </div>
           </div>
         </div> 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import createEntry from '../../utils/createEntry';
 import client from '../../utils/client';
 import clientManagement from '../../utils/clientManagement';
@@ -6,12 +7,10 @@ import clientManagement from '../../utils/clientManagement';
 export const Create = (props) => {
 
   const [movie, setMovie] = useState({})
-
-
+  const history = useHistory();
 
 
   const publishAsset = () => {
-
     let fileData = {
       fields: {
         file: {
@@ -97,6 +96,7 @@ export const Create = (props) => {
             })
             .then((entry) => {
               entry.publish();
+              history.push('/movies')
             }) 
             .catch((error) => {
               console.log(error)
