@@ -32,10 +32,8 @@ export const Details = (props) => {
             <img src={details.fields.moviecover.fields.file.url} />     
             <div className="DetailsInfo">
             <p>Genre: {details.fields.moviegenre}</p>
-            <p>Starring: {details.fields.movieactors.map((actor, index) => {
-              return `${actor.fields.actorname} `
-          })}</p>
-            <p>Director: {details.fields.moviedirector[0].fields.directorname}</p>
+            <p>Starring: {details.fields.movieactor}</p>
+            <p>Director: {details.fields.director}</p>
             <p>{details.fields.moviedescription.content[0].content[0].value}</p>
           </div> 
           <div className="DetailsOptions">

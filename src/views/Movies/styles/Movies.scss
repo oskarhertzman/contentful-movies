@@ -86,14 +86,14 @@
     flex-direction: row;
     height: 430px;
     max-width: 1000px;
-    min-width: 300px;
-    justify-content: center;
+    min-width: 800px;
     margin: 15px;
     img {
         height: 100%;
         border-radius: 10px;
     }
     p {
+        
         color: rgb(37, 37, 37);
        font-size: 20px ;
        margin-bottom: 3px;
@@ -104,17 +104,14 @@
     font-size: 14px;
    }
 
-   input, textarea  {
-       margin-bottom: 20px;
+   input , textarea  {
+       margin-bottom: 10px;
        padding: 5px;
        border: 1px solid rgb(172, 172, 172);
    }
-}
-
-.CreateInfo {
-    margin-bottom: auto;
-    display: flex;
-    flex-direction: column;
+   input[type=file] {
+       border: none;
+   }
 }
 .DetailsInfo {
     margin-left: 50px;
@@ -146,8 +143,63 @@
     transition: 0.2s;
 }
 
+.DetailsOptionsCreate:hover {  
+    background-color: rgb(72, 143, 172);   
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-.DetailsOptionsCreate {
+
+
+.CreateContainer { 
+    position: relative;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    -moz-box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    box-shadow: 0px 0px 18px 0px rgba(69,69,69,1);
+    border-radius: 20px;
+    padding: 30px;      
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 430px;
+    width: 400px;
+    margin: 15px;
+    p {
+        color: rgb(37, 37, 37);
+       font-size: 20px ;
+       margin-bottom: 3px;
+      
+   }
+   label {
+    color: rgb(37, 37, 37);
+    font-size: 14px;
+   }
+
+   input, textarea  {
+       margin-bottom: 10px;
+       padding: 5px;
+       border: 1px solid rgb(172, 172, 172);
+   }
+   input[type=file] {
+       border: none;
+   }
+}
+
+
+.CreateInfo {
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.CreateOptions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.CreateOptionsCreate {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,10 +208,4 @@
     border-radius: 30px;
     background-color: rgb(35, 132, 170);
     margin: 10px;
-}
-
-.DetailsOptionsCreate:hover {  
-    background-color: rgb(72, 143, 172);   
-    cursor: pointer;
-    transition: 0.2s;
 }

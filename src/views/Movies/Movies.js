@@ -1,27 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import './styles/Movies.scss'
-var contentful = require('contentful');
-
+import client from '../../utils/client';
 
 export const Movies = (props) => {
 
-  const [client, setClient] = useState();
   const [movies, setMovies] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
-    setClient(contentful.createClient({
-      space: 'hwcs1bbt6b9l',
-      accessToken: 'wW_rDX48N7w8cnGWtdjbJScrOZGaiwKdKoRTIjmfY6Q'
-    }))
-  }, [])
-
-  useEffect(() => {
-    client && client.getEntries({ content_type: 'movie' }).then(res => {
+     client.getEntries({ content_type: 'movie' }).then(res => {
       setMovies(res.items);
     })
-  },[client])
+  },[])
 
 const toDetails = (movie) => {
     console.log(movie)
